@@ -132,3 +132,35 @@ function openAdmin() {
 // -------------------------
 if (document.querySelector("#standingsA")) updateStandings(teamsA, "standingsA");
 if (document.querySelector("#standingsB")) updateStandings(teamsB, "standingsB");
+document.getElementById("admin-btn").addEventListener("click", openAdmin);
+
+function openAdmin() {
+    const code = prompt("Enter admin code:");
+    if (code !== "66666") {
+        alert("Wrong code!");
+        return;
+    }
+
+    const group = prompt("Which group? (A or B)").toUpperCase();
+    let gameList = group === "A" ? gamesA : gamesB;
+    if (!gameList) {
+        alert("Invalid group");
+        return;
+    }
+
+    let gameStr = gameList.map((g, i) => `${i + 1}: ${g.home} vs ${g.away}`).join("\n");
+    const gameIndex = parseInt(prompt(`Select game to edit:\n${gameStr}`), 10) - 1;
+    if (gameIndex < 0 || gameIndex >= gameList.length) {
+        alert("Invalid game");
+        return;
+    }
+
+    const homeGoals = parseInt(prompt(`Enter goals for ${gameList[gameIndex].home}:`), 10);
+    const awayGoals = parseInt(prompt(`Enter goals for ${gameList[gameIndex].away}:`), 10);
+
+    gameList[gameIndex].homeGoals = homeGoals;
+    gameList[gameIndex].awayGoals = awayGoals;
+
+    if (group === "A") updateStandingsA();
+    if (group === "B") updateStandingsB();
+}
