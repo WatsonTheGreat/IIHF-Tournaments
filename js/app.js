@@ -17,7 +17,7 @@ const teams = [
 // 2️⃣ Games array
 // -------------------------
 const games = [
-  { date: "Dec 26", time: "12:00", home: "Sweden", away: "Slovakia", homeGoals: 1, awayGoals: 3, OT_SO: false },
+  { date: "Dec 26", time: "12:00", home: "Sweden", away: "Slovakia", homeGoals: 1, awayGoals: 4, OT_SO: false },
   { date: "Dec 26", time: "17:00", home: "Germany", away: "United States", homeGoals: null, awayGoals: null, OT_SO: false },
   { date: "Dec 27", time: "14:00", home: "Germany", away: "Slovakia", homeGoals: null, awayGoals: null, OT_SO: false },
   { date: "Dec 27", time: "17:00", home: "Switzerland", away: "United States", homeGoals: null, awayGoals: null, OT_SO: false },
@@ -133,4 +133,5 @@ function updateStandings() {
 // 4️⃣ Initialize
 // -------------------------
 updateStandings();
+
 
