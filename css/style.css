@@ -59,3 +59,27 @@ nav.open {
 main {
     padding: 20px;
 }
+.standings {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.standings th, .standings td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.standings th {
+    background-color: #0b4ea2;
+    color: white;
+}
+
+.standings tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.standings tr:hover {
+    background-color: #dce6f7;
+}
