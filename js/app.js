@@ -4,7 +4,7 @@ function toggleMenu() {
 }
 
 // -------------------------
-// Group A Data
+// Group Data
 // -------------------------
 const teamsA = [
   { name: "United States", seed: 1, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
@@ -27,9 +27,6 @@ const gamesA = [
   { date: "Dec 31", time: "17:00", home: "Sweden", away: "United States", homeGoals: null, awayGoals: null, OT_SO: false },
 ];
 
-// -------------------------
-// Group B Data
-// -------------------------
 const teamsB = [
   { name: "Finland", seed: 2, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
   { name: "Czechia", seed: 3, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
@@ -55,91 +52,83 @@ const gamesB = [
 // Update Standings Function
 // -------------------------
 function updateStandings(teams, tableId) {
-    // Reset stats
     teams.forEach(team => {
-        team.GP = 0;
-        team.W = 0;
-        team.OTW = 0;
-        team.OTL = 0;
-        team.L = 0;
-        team.PTS = 0;
-        team.GF = 0;
-        team.GA = 0;
-        team.DIFF = 0;
+        team.GP = 0; team.W = 0; team.OTW = 0; team.OTL = 0; team.L = 0; team.PTS = 0;
+        team.GF = 0; team.GA = 0; team.DIFF = 0;
     });
 
-    // Determine which games array to use
-    let gamesArray = tableId === "standingsA" ? gamesA : gamesB;
+    const gamesArray = tableId === "standingsA" ? gamesA : gamesB;
 
     gamesArray.forEach(game => {
         if (game.homeGoals === null || game.awayGoals === null) return;
-
         const homeTeam = teams.find(t => t.name === game.home);
         const awayTeam = teams.find(t => t.name === game.away);
-
-        homeTeam.GP++;
-        awayTeam.GP++;
-
-        homeTeam.GF += game.homeGoals;
-        homeTeam.GA += game.awayGoals;
-        awayTeam.GF += game.awayGoals;
-        awayTeam.GA += game.homeGoals;
-
+        homeTeam.GP++; awayTeam.GP++;
+        homeTeam.GF += game.homeGoals; homeTeam.GA += game.awayGoals;
+        awayTeam.GF += game.awayGoals; awayTeam.GA += game.homeGoals;
         homeTeam.DIFF = homeTeam.GF - homeTeam.GA;
         awayTeam.DIFF = awayTeam.GF - awayTeam.GA;
 
         if (game.homeGoals > game.awayGoals) {
-            if (game.OT_SO) {
-                homeTeam.OTW++; awayTeam.OTL++;
-                homeTeam.PTS += 2; awayTeam.PTS += 1;
-            } else {
-                homeTeam.W++; awayTeam.L++;
-                homeTeam.PTS += 3;
-            }
+            if (game.OT_SO) { homeTeam.OTW++; awayTeam.OTL++; homeTeam.PTS+=2; awayTeam.PTS+=1; }
+            else { homeTeam.W++; awayTeam.L++; homeTeam.PTS+=3; }
         } else if (game.awayGoals > game.homeGoals) {
-            if (game.OT_SO) {
-                awayTeam.OTW++; homeTeam.OTL++;
-                awayTeam.PTS += 2; homeTeam.PTS += 1;
-            } else {
-                awayTeam.W++; homeTeam.L++;
-                awayTeam.PTS += 3;
-            }
+            if (game.OT_SO) { awayTeam.OTW++; homeTeam.OTL++; awayTeam.PTS+=2; homeTeam.PTS+=1; }
+            else { awayTeam.W++; homeTeam.L++; awayTeam.PTS+=3; }
         }
     });
 
-    // Sort by PTS → DIFF → GF → Seed
-    teams.sort((a,b) => {
-        if (b.PTS !== a.PTS) return b.PTS - a.PTS;
-        if (b.DIFF !== a.DIFF) return b.DIFF - a.DIFF;
-        if (b.GF !== a.GF) return b.GF - a.GF;
-        return a.seed - b.seed;
-    });
+    teams.sort((a,b) => b.PTS - a.PTS || b.DIFF - a.DIFF || b.GF - a.GF || a.seed - b.seed);
 
-    // Update HTML
     const table = document.querySelector(`#${tableId} tbody`);
     table.innerHTML = "";
     teams.forEach(team => {
         const row = document.createElement("tr");
         row.innerHTML = `
-          <td><img src="images/flags/${team.name.replace(" ", "")}.png" alt="${team.name}" class="flag"></td>
-          <td>${team.name}</td>
-          <td>${team.GP}</td>
-          <td>${team.W}</td>
-          <td>${team.OTW}</td>
-          <td>${team.OTL}</td>
-          <td>${team.L}</td>
-          <td>${team.PTS}</td>
-          <td>${team.GF}</td>
-          <td>${team.GA}</td>
-          <td>${team.DIFF}</td>
-          <td>${team.seed}</td>
+            <td><img src="images/flags/${team.name.replace(" ", "")}.png" alt="${team.name}" class="flag"></td>
+            <td>${team.name}</td>
+            <td>${team.GP}</td>
+            <td>${team.W}</td>
+            <td>${team.OTW}</td>
+            <td>${team.OTL}</td>
+            <td>${team.L}</td>
+            <td>${team.PTS}</td>
+            <td>${team.GF}</td>
+            <td>${team.GA}</td>
+            <td>${team.DIFF}</td>
+            <td>${team.seed}</td>
         `;
         table.appendChild(row);
     });
 }
 
 // -------------------------
-// Initialize based on page
+// Admin Panel
+// -------------------------
+function openAdmin() {
+    const code = prompt("Enter admin code:");
+    if (code !== "66666") return alert("Wrong code!");
+    const group = prompt("Which group to edit? (A or B)").toUpperCase();
+    const gamesArray = group === "A" ? gamesA : gamesB;
+    const teamNames = group === "A" ? teamsA.map(t=>t.name) : teamsB.map(t=>t.name);
+
+    let msg = "Current games:\n";
+    gamesArray.forEach((g,i)=>msg += `${i}: ${g.home} vs ${g.away} - ${g.homeGoals ?? '-'}:${g.awayGoals ?? '-'}\n`);
+    const gameIndex = parseInt(prompt(msg + "Enter game index to edit:"));
+    if (gameIndex < 0 || gameIndex >= gamesArray.length) return;
+
+    const homeGoals = parseInt(prompt(`Enter goals for ${gamesArray[gameIndex].home}:`));
+    const awayGoals = parseInt(prompt(`Enter goals for ${gamesArray[gameIndex].away}:`));
+
+    gamesArray[gameIndex].homeGoals = homeGoals;
+    gamesArray[gameIndex].awayGoals = awayGoals;
+
+    updateStandings(group === "A" ? teamsA : teamsB, group === "A" ? "standingsA" : "standingsB");
+    alert("Score updated!");
+}
+
+// -------------------------
+// Initialize
 // -------------------------
 if (document.querySelector("#standingsA")) updateStandings(teamsA, "standingsA");
 if (document.querySelector("#standingsB")) updateStandings(teamsB, "standingsB");
