@@ -174,3 +174,10 @@ main h2 {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch; /* smooth scrolling on iPhone */
 }
+/* Flags inside standings table */
+.standings .flag {
+    width: 20px;       /* smaller size */
+    height: auto;      /* keeps aspect ratio */
+    display: block;
+    margin: 0 auto;    /* centers the flag inside the cell */
+}
