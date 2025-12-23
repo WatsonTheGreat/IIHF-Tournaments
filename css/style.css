@@ -175,11 +175,12 @@ main h2 {
     -webkit-overflow-scrolling: touch; /* smooth scrolling on iPhone */
 }
 .standings .flag {
-    width: 35px;      /* smaller size for better fit */
+    width: 50px;      /* smaller size for better fit */
     height: auto;     /* maintain aspect ratio */
     display: block;
     margin: 0 auto;   /* center the flag in the cell */
 }
+
 
 
 
