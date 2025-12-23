@@ -2,42 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>IIHF Tournaments</title>
+    <title>IIHF Tournaments – Group A</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Lien vers le CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>IIHF Tournaments</h1>
-    </header>
+<header class="top-bar">
+    <h1>IIHF Tournaments</h1>
 
-    <main>
-        <section id="group-a">
-            <h2>Group A</h2>
-            <p>Games and standings will go here.</p>
-        </section>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-        <section id="group-b">
-            <h2>Group B</h2>
-            <p>Games and standings will go here.</p>
-        </section>
+    <nav id="menu">
+        <a href="index.html">Group A</a>
+        <a href="group-b.html">Group B</a>
+        <a href="playoffs.html">Playoffs</a>
+        <a href="final.html">Final Standings</a>
+    </nav>
+</header>
 
-        <section id="playoffs">
-            <h2>Playoff Round</h2>
-            <p>Bracket and results will go here.</p>
-        </section>
+<main>
+    <h2>Group A</h2>
+    <p>Games, standings, teams.</p>
+</main>
 
-        <section id="final-standings">
-            <h2>Final Standings</h2>
-            <p>Final rankings will go here.</p>
-        </section>
-    </main>
-
-    <!-- Lien vers le JavaScript -->
-    <script src="js/app.js"></script>
+<!-- JS -->
+<script src="js/app.js"></script>
 
 </body>
 </html>
