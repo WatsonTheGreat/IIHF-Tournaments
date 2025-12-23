@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f4f8;
+}
+
+.top-bar {
+    background: #0057b8;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hamburger {
+    font-size: 26px;
+    cursor: pointer;
+}
+
+#menu {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: white;
+    display: none;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#menu.open {
+    display: flex;
+}
+
+#menu a {
+    padding: 12px 18px;
+    text-decoration: none;
+    color: #0057b8;
+    font-weight: bold;
+}
+
+#menu a:hover {
+    background: #f0f0f0;
+}
+
+main {
+    padding: 20px;
+}
