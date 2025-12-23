@@ -176,8 +176,9 @@ main h2 {
 }
 /* Flags inside standings table */
 .standings .flag {
-    width: 20px;       /* smaller size */
+    width: 5px;       /* smaller size */
     height: auto;      /* keeps aspect ratio */
     display: block;
     margin: 0 auto;    /* centers the flag inside the cell */
 }
+
