@@ -169,3 +169,8 @@ main h2 {
         padding: 6px;
     }
 }
+/* Wrap standings table in a scrollable container */
+.standings-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iPhone */
+}
