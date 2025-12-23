@@ -4,7 +4,7 @@ function toggleMenu() {
 }
 
 // -------------------------
-// 1️⃣ Teams arrays
+// Group A Data
 // -------------------------
 const teamsA = [
   { name: "United States", seed: 1, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
@@ -14,17 +14,6 @@ const teamsA = [
   { name: "Germany", seed: 10, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
 ];
 
-const teamsB = [
-  { name: "Finland", seed: 2, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
-  { name: "Czechia", seed: 3, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
-  { name: "Canada", seed: 5, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
-  { name: "Latvia", seed: 7, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
-  { name: "Denmark", seed: 9, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
-];
-
-// -------------------------
-// 2️⃣ Games arrays
-// -------------------------
 const gamesA = [
   { date: "Dec 26", time: "12:00", home: "Sweden", away: "Slovakia", homeGoals: null, awayGoals: null, OT_SO: false },
   { date: "Dec 26", time: "17:00", home: "Germany", away: "United States", homeGoals: null, awayGoals: null, OT_SO: false },
@@ -36,6 +25,17 @@ const gamesA = [
   { date: "Dec 30", time: "14:00", home: "Switzerland", away: "Germany", homeGoals: null, awayGoals: null, OT_SO: false },
   { date: "Dec 31", time: "12:00", home: "Slovakia", away: "Switzerland", homeGoals: null, awayGoals: null, OT_SO: false },
   { date: "Dec 31", time: "17:00", home: "Sweden", away: "United States", homeGoals: null, awayGoals: null, OT_SO: false },
+];
+
+// -------------------------
+// Group B Data
+// -------------------------
+const teamsB = [
+  { name: "Finland", seed: 2, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
+  { name: "Czechia", seed: 3, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
+  { name: "Canada", seed: 5, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
+  { name: "Latvia", seed: 7, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
+  { name: "Denmark", seed: 9, GP: 0, W: 0, OTW: 0, OTL: 0, L: 0, PTS: 0, GF: 0, GA: 0, DIFF: 0 },
 ];
 
 const gamesB = [
@@ -52,102 +52,94 @@ const gamesB = [
 ];
 
 // -------------------------
-// 3️⃣ Update Standings function
+// Update Standings Function
 // -------------------------
-function updateStandings(teamsArray, gamesArray) {
-  // Reset stats
-  teamsArray.forEach(team => {
-    team.GP = 0;
-    team.W = 0;
-    team.OTW = 0;
-    team.OTL = 0;
-    team.L = 0;
-    team.PTS = 0;
-    team.GF = 0;
-    team.GA = 0;
-    team.DIFF = 0;
-  });
+function updateStandings(teams, tableId) {
+    // Reset stats
+    teams.forEach(team => {
+        team.GP = 0;
+        team.W = 0;
+        team.OTW = 0;
+        team.OTL = 0;
+        team.L = 0;
+        team.PTS = 0;
+        team.GF = 0;
+        team.GA = 0;
+        team.DIFF = 0;
+    });
 
-  // Loop through games
-  gamesArray.forEach(game => {
-    if (game.homeGoals === null || game.awayGoals === null) return;
+    // Determine which games array to use
+    let gamesArray = tableId === "standingsA" ? gamesA : gamesB;
 
-    const homeTeam = teamsArray.find(t => t.name === game.home);
-    const awayTeam = teamsArray.find(t => t.name === game.away);
+    gamesArray.forEach(game => {
+        if (game.homeGoals === null || game.awayGoals === null) return;
 
-    homeTeam.GP++;
-    awayTeam.GP++;
+        const homeTeam = teams.find(t => t.name === game.home);
+        const awayTeam = teams.find(t => t.name === game.away);
 
-    homeTeam.GF += game.homeGoals;
-    homeTeam.GA += game.awayGoals;
-    awayTeam.GF += game.awayGoals;
-    awayTeam.GA += game.homeGoals;
+        homeTeam.GP++;
+        awayTeam.GP++;
 
-    homeTeam.DIFF = homeTeam.GF - homeTeam.GA;
-    awayTeam.DIFF = awayTeam.GF - awayTeam.GA;
+        homeTeam.GF += game.homeGoals;
+        homeTeam.GA += game.awayGoals;
+        awayTeam.GF += game.awayGoals;
+        awayTeam.GA += game.homeGoals;
 
-    if (game.homeGoals > game.awayGoals) {
-      if (game.OT_SO) {
-        homeTeam.OTW++;
-        awayTeam.OTL++;
-        homeTeam.PTS += 2;
-        awayTeam.PTS += 1;
-      } else {
-        homeTeam.W++;
-        awayTeam.L++;
-        homeTeam.PTS += 3;
-      }
-    } else if (game.awayGoals > game.homeGoals) {
-      if (game.OT_SO) {
-        awayTeam.OTW++;
-        homeTeam.OTL++;
-        awayTeam.PTS += 2;
-        homeTeam.PTS += 1;
-      } else {
-        awayTeam.W++;
-        homeTeam.L++;
-        awayTeam.PTS += 3;
-      }
-    }
-  });
+        homeTeam.DIFF = homeTeam.GF - homeTeam.GA;
+        awayTeam.DIFF = awayTeam.GF - awayTeam.GA;
 
-  // Sort
-  teamsArray.sort((a, b) => {
-    if (b.PTS !== a.PTS) return b.PTS - a.PTS;
-    if (b.DIFF !== a.DIFF) return b.DIFF - a.DIFF;
-    if (b.GF !== a.GF) return b.GF - a.GF;
-    return a.seed - b.seed;
-  });
+        if (game.homeGoals > game.awayGoals) {
+            if (game.OT_SO) {
+                homeTeam.OTW++; awayTeam.OTL++;
+                homeTeam.PTS += 2; awayTeam.PTS += 1;
+            } else {
+                homeTeam.W++; awayTeam.L++;
+                homeTeam.PTS += 3;
+            }
+        } else if (game.awayGoals > game.homeGoals) {
+            if (game.OT_SO) {
+                awayTeam.OTW++; homeTeam.OTL++;
+                awayTeam.PTS += 2; homeTeam.PTS += 1;
+            } else {
+                awayTeam.W++; homeTeam.L++;
+                awayTeam.PTS += 3;
+            }
+        }
+    });
 
-  // Update HTML
-  const table = document.querySelector(".standings tbody");
-  table.innerHTML = "";
+    // Sort by PTS → DIFF → GF → Seed
+    teams.sort((a,b) => {
+        if (b.PTS !== a.PTS) return b.PTS - a.PTS;
+        if (b.DIFF !== a.DIFF) return b.DIFF - a.DIFF;
+        if (b.GF !== a.GF) return b.GF - a.GF;
+        return a.seed - b.seed;
+    });
 
-  teamsArray.forEach(team => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td><img src="images/flags/${team.name.replace(/ /g,'')}.png" alt="${team.name}" class="flag"></td>
-      <td>${team.name}</td>
-      <td>${team.GP}</td>
-      <td>${team.W}</td>
-      <td>${team.OTW}</td>
-      <td>${team.OTL}</td>
-      <td>${team.L}</td>
-      <td>${team.PTS}</td>
-      <td>${team.GF}</td>
-      <td>${team.GA}</td>
-      <td>${team.DIFF}</td>
-      <td>${team.seed}</td>
-    `;
-    table.appendChild(row);
-  });
+    // Update HTML
+    const table = document.querySelector(`#${tableId} tbody`);
+    table.innerHTML = "";
+    teams.forEach(team => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><img src="images/flags/${team.name.replace(" ", "")}.png" alt="${team.name}" class="flag"></td>
+          <td>${team.name}</td>
+          <td>${team.GP}</td>
+          <td>${team.W}</td>
+          <td>${team.OTW}</td>
+          <td>${team.OTL}</td>
+          <td>${team.L}</td>
+          <td>${team.PTS}</td>
+          <td>${team.GF}</td>
+          <td>${team.GA}</td>
+          <td>${team.DIFF}</td>
+          <td>${team.seed}</td>
+        `;
+        table.appendChild(row);
+    });
 }
 
 // -------------------------
-// 4️⃣ Initialize based on page
+// Initialize based on page
 // -------------------------
-if (document.body.textContent.includes("Group A Standings")) {
-  updateStandings(teamsA, gamesA);
-} else if (document.body.textContent.includes("Group B Standings")) {
-  updateStandings(teamsB, gamesB);
-}
+if (document.querySelector("#standingsA")) updateStandings(teamsA, "standingsA");
+if (document.querySelector("#standingsB")) updateStandings(teamsB, "standingsB");
