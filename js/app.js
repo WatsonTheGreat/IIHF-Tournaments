@@ -1,86 +1,168 @@
-// Hamburger menu toggle
+// =====================
+// HAMBURGER MENU
+// =====================
 function toggleMenu() {
     document.getElementById("menu").classList.toggle("open");
 }
 
-// -------------------------
-// Group Data
-// -------------------------
-const teamsA = [ /* same as your previous teamsA */ ];
-const gamesA = [ /* same as your previous gamesA */ ];
-const teamsB = [ /* same as your previous teamsB */ ];
-const gamesB = [ /* same as your previous gamesB */ ];
+// =====================
+// DATA
+// =====================
+const teamsA = [
+  { name: "United States", seed: 1, GP:0,W:0,OTW:0,OTL:0,L:0,PTS:0,GF:0,GA:0,DIFF:0 },
+  { name: "Sweden", seed: 4, GP:0,W:0,OTW:0,OTL:0,L:0,PTS:0,GF:0,GA:0,DIFF:0 },
+  { name: "Slovakia", seed: 6, GP:0,W:0,OTW:0,OTL:0,L:0,PTS:0,GF:0,GA:0,DIFF:0 },
+  { name: "Switzerland", seed: 8, GP:0,W:0,OTW:0,OTL:0,L:0,PTS:0,GF:0,GA:0,DIFF:0 },
+  { name: "Germany", seed: 10, GP:0,W:0,OTW:0,OTL:0,L:0,PTS:0,GF:0,GA:0,DIFF:0 },
+];
 
-// -------------------------
-// Render Standings
-// -------------------------
-function updateStandings(teams, tableId) {
-    teams.forEach(t => { t.GP=t.W=t.OTW=t.OTL=t.L=t.PTS=t.GF=t.GA=t.DIFF=0; });
-    const gamesArray = tableId==="standingsA"?gamesA:gamesB;
-    gamesArray.forEach(game => {
-        if(game.homeGoals===null || game.awayGoals===null) return;
-        const home=teams.find(t=>t.name===game.home);
-        const away=teams.find(t=>t.name===game.away);
-        home.GP++; away.GP++;
-        home.GF+=game.homeGoals; home.GA+=game.awayGoals; home.DIFF=home.GF-home.GA;
-        away.GF+=game.awayGoals; away.GA+=game.homeGoals; away.DIFF=away.GF-away.GA;
-        if(game.homeGoals>game.awayGoals){
-            if(game.OT_SO){ home.OTW++; away.OTL++; home.PTS+=2; away.PTS+=1; }
-            else { home.W++; away.L++; home.PTS+=3; }
-        } else if(game.awayGoals>game.homeGoals){
-            if(game.OT_SO){ away.OTW++; home.OTL++; away.PTS+=2; home.PTS+=1; }
-            else { away.W++; home.L++; away.PTS+=3; }
+const gamesA = [
+  {date:"Dec 26",time:"12:00",home:"Sweden",away:"Slovakia",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 26",time:"17:00",home:"Germany",away:"United States",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 27",time:"14:00",home:"Germany",away:"Slovakia",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 27",time:"17:00",home:"Switzerland",away:"United States",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 28",time:"14:00",home:"Switzerland",away:"Sweden",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 29",time:"12:00",home:"Germany",away:"Sweden",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 29",time:"17:00",home:"Slovakia",away:"United States",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 30",time:"14:00",home:"Switzerland",away:"Germany",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 31",time:"12:00",home:"Slovakia",away:"Switzerland",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 31",time:"17:00",home:"Sweden",away:"United States",homeGoals:null,awayGoals:null,OT_SO:false},
+];
+
+const teamsB = [
+  { name: "Finland", seed: 2, GP:0,W:0,OTW:0,OTL:0,L:0,PTS:0,GF:0,GA:0,DIFF:0 },
+  { name: "Czechia", seed: 3, GP:0,W:0,OTW:0,OTL:0,L:0,PTS:0,GF:0,GA:0,DIFF:0 },
+  { name: "Canada", seed: 5, GP:0,W:0,OTW:0,OTL:0,L:0,PTS:0,GF:0,GA:0,DIFF:0 },
+  { name: "Latvia", seed: 7, GP:0,W:0,OTW:0,OTL:0,L:0,PTS:0,GF:0,GA:0,DIFF:0 },
+  { name: "Denmark", seed: 9, GP:0,W:0,OTW:0,OTL:0,L:0,PTS:0,GF:0,GA:0,DIFF:0 },
+];
+
+const gamesB = [
+  {date:"Dec 26",time:"14:30",home:"Denmark",away:"Finland",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 26",time:"19:30",home:"Czechia",away:"Canada",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 27",time:"15:30",home:"Latvia",away:"Canada",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 27",time:"19:30",home:"Denmark",away:"Czechia",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 28",time:"15:30",home:"Finland",away:"Latvia",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 29",time:"15:30",home:"Finland",away:"Czechia",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 29",time:"19:30",home:"Canada",away:"Denmark",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 30",time:"15:30",home:"Latvia",away:"Denmark",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 31",time:"15:30",home:"Czechia",away:"Latvia",homeGoals:null,awayGoals:null,OT_SO:false},
+  {date:"Dec 31",time:"19:30",home:"Canada",away:"Finland",homeGoals:null,awayGoals:null,OT_SO:false},
+];
+
+// =====================
+// RENDER GAMES
+// =====================
+function renderGames(games, tableId){
+    const tbody = document.querySelector(`#${tableId} tbody`);
+    if(!tbody) return;
+    tbody.innerHTML = "";
+
+    games.forEach(g=>{
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${g.date}</td>
+            <td>${g.time}</td>
+            <td>${g.home}</td>
+            <td>${g.homeGoals ?? "-"} : ${g.awayGoals ?? "-"}</td>
+            <td>${g.away}</td>
+            <td>${g.OT_SO ? "OT / SO" : ""}</td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+// =====================
+// UPDATE STANDINGS
+// =====================
+function updateStandings(teams, games, tableId){
+    teams.forEach(t=>{
+        t.GP=t.W=t.OTW=t.OTL=t.L=t.PTS=t.GF=t.GA=t.DIFF=0;
+    });
+
+    games.forEach(g=>{
+        if(g.homeGoals===null || g.awayGoals===null) return;
+
+        const h = teams.find(t=>t.name===g.home);
+        const a = teams.find(t=>t.name===g.away);
+
+        h.GP++; a.GP++;
+        h.GF+=g.homeGoals; h.GA+=g.awayGoals;
+        a.GF+=g.awayGoals; a.GA+=g.homeGoals;
+
+        if(g.homeGoals>g.awayGoals){
+            if(g.OT_SO){ h.OTW++; a.OTL++; h.PTS+=2; a.PTS+=1; }
+            else { h.W++; a.L++; h.PTS+=3; }
+        } else {
+            if(g.OT_SO){ a.OTW++; h.OTL++; a.PTS+=2; h.PTS+=1; }
+            else { a.W++; h.L++; a.PTS+=3; }
         }
     });
+
+    teams.forEach(t=>t.DIFF=t.GF-t.GA);
     teams.sort((a,b)=>b.PTS-a.PTS || b.DIFF-a.DIFF || b.GF-a.GF || a.seed-b.seed);
-    const table=document.querySelector(`#${tableId} tbody`);
-    table.innerHTML="";
-    teams.forEach(team=>{
+
+    const tbody = document.querySelector(`#${tableId} tbody`);
+    if(!tbody) return;
+    tbody.innerHTML="";
+
+    teams.forEach(t=>{
         const row=document.createElement("tr");
         row.innerHTML=`
-            <td><img src="images/flags/${team.name.replace(" ","")}.png" alt="${team.name}" class="flag"></td>
-            <td>${team.name}</td>
-            <td>${team.GP}</td>
-            <td>${team.W}</td>
-            <td>${team.OTW}</td>
-            <td>${team.OTL}</td>
-            <td>${team.L}</td>
-            <td>${team.PTS}</td>
-            <td>${team.GF}</td>
-            <td>${team.GA}</td>
-            <td>${team.DIFF}</td>
-            <td>${team.seed}</td>
+            <td><img src="images/flags/${t.name.replace(" ","")}.png" class="flag"></td>
+            <td>${t.name}</td>
+            <td>${t.GP}</td>
+            <td>${t.W}</td>
+            <td>${t.OTW}</td>
+            <td>${t.OTL}</td>
+            <td>${t.L}</td>
+            <td>${t.PTS}</td>
+            <td>${t.GF}</td>
+            <td>${t.GA}</td>
+            <td>${t.DIFF}</td>
+            <td>${t.seed}</td>
         `;
-        table.appendChild(row);
+        tbody.appendChild(row);
     });
 }
 
-// -------------------------
-// Admin Panel
-// -------------------------
-function openAdmin() {
-    const code = prompt("Enter admin code:");
-    if(code!=="66666"){ alert("Wrong code!"); return; }
-    const group=prompt("Which group? (A or B)").toUpperCase();
-    const gamesArray = group==="A"?gamesA:gamesB;
-    const teamsArray = group==="A"?teamsA:teamsB;
-    let gameStr = gamesArray.map((g,i)=>`${i+1}: ${g.home} vs ${g.away} - ${g.homeGoals??'-'}:${g.awayGoals??'-'}`).join("\n");
-    const gameIndex = parseInt(prompt(`Select game to edit:\n${gameStr}`),10)-1;
-    if(gameIndex<0 || gameIndex>=gamesArray.length){ alert("Invalid game"); return; }
-    const homeGoals = parseInt(prompt(`Enter goals for ${gamesArray[gameIndex].home}:`),10);
-    const awayGoals = parseInt(prompt(`Enter goals for ${gamesArray[gameIndex].away}:`),10);
-    gamesArray[gameIndex].homeGoals = homeGoals;
-    gamesArray[gameIndex].awayGoals = awayGoals;
-    updateStandings(teamsArray, group==="A"?"standingsA":"standingsB");
-    alert("Score updated!");
+// =====================
+// ADMIN PANEL
+// =====================
+function openAdmin(){
+    if(prompt("Admin code")!=="66666") return;
+
+    const group = prompt("Group A or B?").toUpperCase();
+    const games = group==="A"?gamesA:gamesB;
+    const teams = group==="A"?teamsA:teamsB;
+
+    let list = games.map((g,i)=>`${i+1}: ${g.home} vs ${g.away}`).join("\n");
+    const i = parseInt(prompt(list))-1;
+    if(!games[i]) return;
+
+    games[i].homeGoals = parseInt(prompt("Home goals"));
+    games[i].awayGoals = parseInt(prompt("Away goals"));
+
+    if(group==="A"){
+        updateStandings(teamsA,gamesA,"standingsA");
+        renderGames(gamesA,"gamesA");
+    } else {
+        updateStandings(teamsB,gamesB,"standingsB");
+        renderGames(gamesB,"gamesB");
+    }
 }
 
-// -------------------------
-// Initialize
-// -------------------------
-document.addEventListener("DOMContentLoaded", ()=>{
-    if(document.querySelector("#standingsA")) updateStandings(teamsA,"standingsA");
-    if(document.querySelector("#standingsB")) updateStandings(teamsB,"standingsB");
-    const adminBtn=document.getElementById("admin-btn");
-    if(adminBtn) adminBtn.addEventListener("click", openAdmin);
+// =====================
+// INIT
+// =====================
+document.addEventListener("DOMContentLoaded",()=>{
+    if(document.querySelector("#standingsA")){
+        updateStandings(teamsA,gamesA,"standingsA");
+        renderGames(gamesA,"gamesA");
+    }
+    if(document.querySelector("#standingsB")){
+        updateStandings(teamsB,gamesB,"standingsB");
+        renderGames(gamesB,"gamesB");
+    }
+    document.getElementById("admin-btn")?.addEventListener("click",openAdmin);
 });
