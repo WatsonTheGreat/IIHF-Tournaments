@@ -156,13 +156,17 @@ function openAdmin() {
     const awayGoals = parseInt(prompt(`Goals for ${gamesArray[gameIndex].away}:`), 10);
     if (isNaN(homeGoals) || isNaN(awayGoals)) return;
 
-    // 🔥 NEW: OT / SO choice
-    const ot = prompt("Did the game go to OT or SO? (yes/no)").toLowerCase();
-    const isOT = ot === "yes" || ot === "y";
+    // 🔥 OT / SO selection
+    const resultType = prompt("Game type? (R = Regulation, OT = Overtime, SO = Shootout)").toUpperCase();
 
     gamesArray[gameIndex].homeGoals = homeGoals;
     gamesArray[gameIndex].awayGoals = awayGoals;
-    gamesArray[gameIndex].OT_SO = isOT;
+
+    if (resultType === "OT" || resultType === "SO") {
+        gamesArray[gameIndex].OT_SO = resultType; // "OT" or "SO"
+    } else {
+        gamesArray[gameIndex].OT_SO = false;
+    }
 
     updateStandings(teamsArray, gamesArray, standingsId);
     renderGames(gamesArray, gamesId);
@@ -182,5 +186,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
     document.getElementById("admin-btn")?.addEventListener("click",openAdmin);
 });
+
 
 
