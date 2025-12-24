@@ -1,69 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>IIHF Tournaments – Group B</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>IIHF Tournaments – Group B</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
-    <h1>IIHF Tournaments</h1>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <h1>IIHF Tournaments</h1>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
 </header>
 
 <nav id="menu">
-    <a href="index.html">Group A</a>
-    <a href="groupe-B.html">Group B</a>
-    <a href="playoffs.html">Playoffs</a>
-    <a href="final.html">Final Standings</a>
+  <a href="index.html">Group A</a>
+  <a href="groupe-B.html">Group B</a>
+  <a href="playoffs.html">Playoffs</a>
+  <a href="final.html">Final Standings</a>
 </nav>
 
 <main>
-    <h2>Group B Standings</h2>
-    <div class="standings-wrapper">
-        <table id="standingsB" class="standings">
-            <thead>
-                <tr>
-                    <th>Flag</th>
-                    <th>Team</th>
-                    <th>GP</th>
-                    <th>W</th>
-                    <th>OTW</th>
-                    <th>OTL</th>
-                    <th>L</th>
-                    <th>PTS</th>
-                    <th>GF</th>
-                    <th>GA</th>
-                    <th>DIFF</th>
-                    <th>Seed</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-
-    <h2>Group B Games</h2>
-    <table id="gamesB" class="games">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Home</th>
-                <th>Score</th>
-                <th>Away</th>
-                <th>OT / SO</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
+  <h2>Group B Standings</h2>
+  <div class="standings-wrapper">
+    <table id="standingsB" class="standings">
+      <thead>
+        <tr>
+          <th>Flag</th><th>Team</th><th>GP</th><th>W</th><th>OTW</th><th>OTL</th><th>L</th><th>PTS</th><th>GF</th><th>GA</th><th>DIFF</th><th>Seed</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
     </table>
-</main>
+  </div>
 
-<!-- Admin button -->
-<button id="admin-btn">⚙️</button>
+  <h2>Group B Games</h2>
+  <table id="gamesB" class="games">
+    <thead>
+      <tr>
+        <th>Date</th><th>Time</th><th>Home</th><th>Score</th><th>Away</th><th>OT / SO</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</main>
 
 <script src="js/app.js"></script>
 </body>
 </html>
-
