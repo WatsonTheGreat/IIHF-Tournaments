@@ -1,26 +1,21 @@
 {
-  "groupA":[
-    { "date":"Dec 26","time":"12:00","home":"Sweden","away":"Slovakia","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 26","time":"17:00","home":"Germany","away":"United States","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 27","time":"14:00","home":"Germany","away":"Slovakia","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 27","time":"17:00","home":"Switzerland","away":"United States","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 28","time":"14:00","home":"Switzerland","away":"Sweden","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 29","time":"12:00","home":"Germany","away":"Sweden","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 29","time":"17:00","home":"Slovakia","away":"United States","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 30","time":"14:00","home":"Switzerland","away":"Germany","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 31","time":"12:00","home":"Slovakia","away":"Switzerland","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 31","time":"17:00","home":"Sweden","away":"United States","homeGoals":null,"awayGoals":null,"OT_SO":"" }
+  "teamsA":[
+    {"name":"United States","seed":1,"GP":0,"W":0,"OTW":0,"OTL":0,"L":0,"PTS":0,"GF":0,"GA":0,"DIFF":0},
+    {"name":"Sweden","seed":4,"GP":0,"W":0,"OTW":0,"OTL":0,"L":0,"PTS":0,"GF":0,"GA":0,"DIFF":0},
+    {"name":"Slovakia","seed":6,"GP":0,"W":0,"OTW":0,"OTL":0,"L":0,"PTS":0,"GF":0,"GA":0,"DIFF":0},
+    {"name":"Switzerland","seed":8,"GP":0,"W":0,"OTW":0,"OTL":0,"L":0,"PTS":0,"GF":0,"GA":0,"DIFF":0},
+    {"name":"Germany","seed":10,"GP":0,"W":0,"OTW":0,"OTL":0,"L":0,"PTS":0,"GF":0,"GA":0,"DIFF":0}
   ],
-  "groupB":[
-    { "date":"Dec 26","time":"14:30","home":"Denmark","away":"Finland","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 26","time":"19:30","home":"Czechia","away":"Canada","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 27","time":"15:30","home":"Latvia","away":"Canada","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 27","time":"19:30","home":"Denmark","away":"Czechia","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 28","time":"15:30","home":"Finland","away":"Latvia","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 29","time":"15:30","home":"Finland","away":"Czechia","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 29","time":"19:30","home":"Canada","away":"Denmark","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 30","time":"15:30","home":"Latvia","away":"Denmark","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 31","time":"15:30","home":"Czechia","away":"Latvia","homeGoals":null,"awayGoals":null,"OT_SO":"" },
-    { "date":"Dec 31","time":"19:30","home":"Canada","away":"Finland","homeGoals":null,"awayGoals":null,"OT_SO":"" }
+  "gamesA":[
+    {"date":"Dec 26","time":"12:00","home":"Sweden","away":"Slovakia","homeGoals":null,"awayGoals":null,"OT_SO":""},
+    {"date":"Dec 26","time":"17:00","home":"Germany","away":"United States","homeGoals":null,"awayGoals":null,"OT_SO":""}
+  ],
+  "teamsB":[
+    {"name":"Finland","seed":2,"GP":0,"W":0,"OTW":0,"OTL":0,"L":0,"PTS":0,"GF":0,"GA":0,"DIFF":0},
+    {"name":"Czechia","seed":3,"GP":0,"W":0,"OTW":0,"OTL":0,"L":0,"PTS":0,"GF":0,"GA":0,"DIFF":0}
+  ],
+  "gamesB":[
+    {"date":"Dec 26","time":"14:30","home":"Denmark","away":"Finland","homeGoals":null,"awayGoals":null,"OT_SO":""},
+    {"date":"Dec 26","time":"19:30","home":"Czechia","away":"Canada","homeGoals":null,"awayGoals":null,"OT_SO":""}
   ]
 }
