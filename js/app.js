@@ -53,20 +53,21 @@ const gamesB = [
 // =====================
 // RENDER GAMES
 // =====================
-function renderGames(games, tableId){
+function renderGames(gamesArray, tableId) {
     const tbody = document.querySelector(`#${tableId} tbody`);
-    if(!tbody) return;
+    if (!tbody) return;
+
     tbody.innerHTML = "";
 
-    games.forEach(g=>{
+    gamesArray.forEach(g => {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${g.date}</td>
             <td>${g.time}</td>
             <td>${g.home}</td>
-            <td>${g.homeGoals ?? "-"} : ${g.awayGoals ?? "-"}</td>
+            <td>${g.homeGoals ?? "-"} - ${g.awayGoals ?? "-"}</td>
             <td>${g.away}</td>
-            <td>${g.OT_SO ? "OT / SO" : ""}</td>
+            <td>${g.OT_SO ? g.OT_SO : ""}</td>
         `;
         tbody.appendChild(row);
     });
@@ -186,6 +187,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
     document.getElementById("admin-btn")?.addEventListener("click",openAdmin);
 });
+
 
 
 
