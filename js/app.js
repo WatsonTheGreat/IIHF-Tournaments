@@ -129,27 +129,43 @@ function updateStandings(teams, games, tableId){
 // =====================
 // ADMIN PANEL
 // =====================
-function openAdmin(){
-    if(prompt("Admin code")!=="66666") return;
-
-    const group = prompt("Group A or B?").toUpperCase();
-    const games = group==="A"?gamesA:gamesB;
-    const teams = group==="A"?teamsA:teamsB;
-
-    let list = games.map((g,i)=>`${i+1}: ${g.home} vs ${g.away}`).join("\n");
-    const i = parseInt(prompt(list))-1;
-    if(!games[i]) return;
-
-    games[i].homeGoals = parseInt(prompt("Home goals"));
-    games[i].awayGoals = parseInt(prompt("Away goals"));
-
-    if(group==="A"){
-        updateStandings(teamsA,gamesA,"standingsA");
-        renderGames(gamesA,"gamesA");
-    } else {
-        updateStandings(teamsB,gamesB,"standingsB");
-        renderGames(gamesB,"gamesB");
+function openAdmin() {
+    const code = prompt("Enter admin code:");
+    if (code !== "66666") {
+        alert("Wrong code!");
+        return;
     }
+
+    const group = prompt("Which group? (A/B)").toUpperCase();
+    if (group !== "A" && group !== "B") return;
+
+    const gamesArray = group === "A" ? gamesA : gamesB;
+    const teamsArray = group === "A" ? teamsA : teamsB;
+    const standingsId = group === "A" ? "standingsA" : "standingsB";
+    const gamesId = group === "A" ? "gamesA" : "gamesB";
+
+    let msg = "Current games:\n";
+    gamesArray.forEach((g, i) => {
+        msg += `${i + 1}: ${g.home} vs ${g.away} (${g.homeGoals ?? "-"}:${g.awayGoals ?? "-"})\n`;
+    });
+
+    const gameIndex = parseInt(prompt(msg + "\nEnter game number:"), 10) - 1;
+    if (gameIndex < 0 || gameIndex >= gamesArray.length) return;
+
+    const homeGoals = parseInt(prompt(`Goals for ${gamesArray[gameIndex].home}:`), 10);
+    const awayGoals = parseInt(prompt(`Goals for ${gamesArray[gameIndex].away}:`), 10);
+    if (isNaN(homeGoals) || isNaN(awayGoals)) return;
+
+    // 🔥 NEW: OT / SO choice
+    const ot = prompt("Did the game go to OT or SO? (yes/no)").toLowerCase();
+    const isOT = ot === "yes" || ot === "y";
+
+    gamesArray[gameIndex].homeGoals = homeGoals;
+    gamesArray[gameIndex].awayGoals = awayGoals;
+    gamesArray[gameIndex].OT_SO = isOT;
+
+    updateStandings(teamsArray, gamesArray, standingsId);
+    renderGames(gamesArray, gamesId);
 }
 
 // =====================
@@ -166,3 +182,4 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
     document.getElementById("admin-btn")?.addEventListener("click",openAdmin);
 });
+
