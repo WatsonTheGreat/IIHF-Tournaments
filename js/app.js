@@ -5,7 +5,7 @@ document.getElementById("hamburger")?.addEventListener("click",()=>{
 
 // Load data from games.json
 let gamesData = {};
-fetch('js/games.json')
+fetch('data/games.json')
     .then(res=>res.json())
     .then(data=>{
         gamesData = data;
@@ -55,3 +55,4 @@ function renderStandings(teams, tableId){
         tbody.appendChild(row);
     });
 }
+
