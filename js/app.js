@@ -72,6 +72,28 @@ function renderGames(gamesArray, tableId) {
         tbody.appendChild(row);
     });
 }
+// =====================
+// Save the game scores
+// =====================
+function saveData() {
+    localStorage.setItem("gamesA", JSON.stringify(gamesA));
+    localStorage.setItem("gamesB", JSON.stringify(gamesB));
+}
+
+function loadData() {
+    const savedA = localStorage.getItem("gamesA");
+    const savedB = localStorage.getItem("gamesB");
+
+    if (savedA) {
+        const parsedA = JSON.parse(savedA);
+        parsedA.forEach((g, i) => Object.assign(gamesA[i], g));
+    }
+
+    if (savedB) {
+        const parsedB = JSON.parse(savedB);
+        parsedB.forEach((g, i) => Object.assign(gamesB[i], g));
+    }
+}
 
 // =====================
 // UPDATE STANDINGS
@@ -168,7 +190,7 @@ function openAdmin() {
     } else {
         gamesArray[gameIndex].OT_SO = false;
     }
-
+    saveData();
     updateStandings(teamsArray, gamesArray, standingsId);
     renderGames(gamesArray, gamesId);
 }
@@ -187,6 +209,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
     document.getElementById("admin-btn")?.addEventListener("click",openAdmin);
 });
+
 
 
 
