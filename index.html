@@ -6,12 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
+
+    hamburger.addEventListener("click", () => {
+        menu.classList.toggle("open");
+    });
+});
+</script>
 <body>
 
 <header>
     <h1>IIHF Tournaments</h1>
     <div class="hamburger" id="hamburger">☰</div>
 </header>
+<nav id="menu">
+    <a href="index.html">Group A</a>
+    <a href="groupe-B.html">Group B</a>
+</nav>
 
 <main>
     <h2>Group A Standings</h2>
@@ -105,6 +119,7 @@
 
 </body>
 </html>
+
 
 
 
