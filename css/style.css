@@ -38,5 +38,10 @@ main h2{margin-bottom:12px;color:#0b4ea2}
 .standings-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .standings .flag{width:35px;height:auto;display:block;margin:0 auto}
 
+/* GAMES WRAPPER */
+.games-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.games .flag{width:35px;height:auto;display:block;margin:0 auto}
+
 /* MOBILE */
 @media(max-width:768px){.standings,.games td,.games th{font-size:12px;padding:6px} header h1{font-size:18px}}
+
