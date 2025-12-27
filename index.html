@@ -6,16 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.getElementById("hamburger");
-    const menu = document.getElementById("menu");
-
-    hamburger.addEventListener("click", () => {
-        menu.classList.toggle("open");
-    });
-});
-</script>
 <body>
 
 <header>
@@ -51,35 +41,75 @@ document.addEventListener("DOMContentLoaded", () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><img src="images/flags/UnitedStates.png" class="flag"></td>
-                    <td>United States</td>
-                    <td>1</td><td>1</td><td>0</td><td>0</td>
-                    <td>0</td><td>3</td><td>6</td><td>3</td><td>3</td><td>1</td>
-                </tr>
-                <tr>
+                <tr data-team="Sweden">
                     <td><img src="images/flags/Sweden.png" class="flag"></td>
                     <td>Sweden</td>
-                    <td>1</td><td>1</td><td>0</td><td>0</td>
-                    <td>0</td><td>3</td><td>3</td><td>2</td><td>1</td><td>4</td>
+                    <td class="gp">0</td>
+                    <td class="w">0</td>
+                    <td class="otw">0</td>
+                    <td class="otl">0</td>
+                    <td class="l">0</td>
+                    <td class="pts">0</td>
+                    <td class="gf">0</td>
+                    <td class="ga">0</td>
+                    <td class="diff">0</td>
+                    <td>4</td>
                 </tr>
-                <tr>
+                <tr data-team="United States">
+                    <td><img src="images/flags/USA.png" class="flag"></td>
+                    <td>United States</td>
+                    <td class="gp">0</td>
+                    <td class="w">0</td>
+                    <td class="otw">0</td>
+                    <td class="otl">0</td>
+                    <td class="l">0</td>
+                    <td class="pts">0</td>
+                    <td class="gf">0</td>
+                    <td class="ga">0</td>
+                    <td class="diff">0</td>
+                    <td>1</td>
+                </tr>
+                <tr data-team="Switzerland">
                     <td><img src="images/flags/Switzerland.png" class="flag"></td>
                     <td>Switzerland</td>
-                    <td>0</td><td>0</td><td>0</td><td>0</td>
-                    <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>8</td>
+                    <td class="gp">0</td>
+                    <td class="w">0</td>
+                    <td class="otw">0</td>
+                    <td class="otl">0</td>
+                    <td class="l">0</td>
+                    <td class="pts">0</td>
+                    <td class="gf">0</td>
+                    <td class="ga">0</td>
+                    <td class="diff">0</td>
+                    <td>8</td>
                 </tr>
-                <tr>
-                    <td><img src="images/flags/Slovakia.png" class="flag"></td>
-                    <td>Slovakia</td>
-                    <td>1</td><td>0</td><td>0</td><td>0</td>
-                    <td>1</td><td>0</td><td>2</td><td>3</td><td>-1</td><td>6</td>
-                </tr>
-                <tr>
+                <tr data-team="Germany">
                     <td><img src="images/flags/Germany.png" class="flag"></td>
                     <td>Germany</td>
-                    <td>1</td><td>0</td><td>0</td><td>0</td>
-                    <td>1</td><td>0</td><td>3</td><td>6</td><td>-3</td><td>9</td>
+                    <td class="gp">0</td>
+                    <td class="w">0</td>
+                    <td class="otw">0</td>
+                    <td class="otl">0</td>
+                    <td class="l">0</td>
+                    <td class="pts">0</td>
+                    <td class="gf">0</td>
+                    <td class="ga">0</td>
+                    <td class="diff">0</td>
+                    <td>9</td>
+                </tr>
+                <tr data-team="Slovakia">
+                    <td><img src="images/flags/Slovakia.png" class="flag"></td>
+                    <td>Slovakia</td>
+                    <td class="gp">0</td>
+                    <td class="w">0</td>
+                    <td class="otw">0</td>
+                    <td class="otl">0</td>
+                    <td class="l">0</td>
+                    <td class="pts">0</td>
+                    <td class="gf">0</td>
+                    <td class="ga">0</td>
+                    <td class="diff">0</td>
+                    <td>6</td>
                 </tr>
             </tbody>
         </table>
@@ -99,99 +129,99 @@ document.addEventListener("DOMContentLoaded", () => {
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr class="game">
                 <td>Dec 26</td>
                 <td>12:00</td>
-                <td><img src="images/flags/Sweden.png" class="flag"></td>
-                <td>3–2</td>
-                <td><img src="images/flags/Slovakia.png" class="flag"></td>
+                <td data-home="Sweden"><img src="images/flags/Sweden.png" class="flag"></td>
+                <td class="score">3-2</td>
+                <td data-away="Slovakia"><img src="images/flags/Slovakia.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 26</td>
                 <td>17:00</td>
-                <td><img src="images/flags/Germany.png" class="flag"></td>
-                <td>3-6</td>
-                <td><img src="images/flags/UnitedStates.png" class="flag"></td>
+                <td data-home="Germany"><img src="images/flags/Germany.png" class="flag"></td>
+                <td class="score">3-6</td>
+                <td data-away="United States"><img src="images/flags/USA.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 27</td>
                 <td>13:00</td>
-                <td><img src="images/flags/Germany.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Slovakia.png" class="flag"></td>
+                <td data-home="Germany"><img src="images/flags/Germany.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Slovakia"><img src="images/flags/Slovakia.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 27</td>
                 <td>13:00</td>
-                <td><img src="images/flags/Switzerland.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/UnitedStates.png" class="flag"></td>
+                <td data-home="Switzerland"><img src="images/flags/Switzerland.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="United States"><img src="images/flags/USA.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 28</td>
                 <td>17:00</td>
-                <td><img src="images/flags/Switzerland.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Sweden.png" class="flag"></td>
+                <td data-home="Switzerland"><img src="images/flags/Switzerland.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Sweden"><img src="images/flags/Sweden.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 29</td>
                 <td>12:00</td>
-                <td><img src="images/flags/Germany.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Sweden.png" class="flag"></td>
+                <td data-home="Germany"><img src="images/flags/Germany.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Sweden"><img src="images/flags/Sweden.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 29</td>
                 <td>17:00</td>
-                <td><img src="images/flags/Slovakia.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/UnitedStates.png" class="flag"></td>
+                <td data-home="Slovakia"><img src="images/flags/Slovakia.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="United States"><img src="images/flags/USA.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 30</td>
                 <td>17:00</td>
-                <td><img src="images/flags/Switzerland.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Germany.png" class="flag"></td>
+                <td data-home="Switzerland"><img src="images/flags/Switzerland.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Germany"><img src="images/flags/Germany.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 31</td>
                 <td>17:00</td>
-                <td><img src="images/flags/Slovakia.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Switzerland.png" class="flag"></td>
+                <td data-home="Slovakia"><img src="images/flags/Slovakia.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Switzerland"><img src="images/flags/Switzerland.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 31</td>
                 <td>17:00</td>
-                <td><img src="images/flags/UnitedStates.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Sweden.png" class="flag"></td>
+                <td data-home="United States"><img src="images/flags/USA.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Sweden"><img src="images/flags/Sweden.png" class="flag"></td>
                 <td></td>
             </tr>
         </tbody>
     </table>
 </main>
+<script src="js/standings.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
 
+    hamburger.addEventListener("click", () => {
+        menu.classList.toggle("open");
+    });
+});
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
