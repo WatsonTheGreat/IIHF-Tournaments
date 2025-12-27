@@ -51,35 +51,75 @@ document.addEventListener("DOMContentLoaded", () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr data-team="Finland">
                     <td><img src="images/flags/Finland.png" class="flag"></td>
                     <td>Finland</td>
-                    <td>1</td><td>1</td><td>0</td><td>0</td>
-                    <td>0</td><td>3</td><td>6</td><td>2</td><td>4</td><td>2</td>
+                    <td class="gp">0</td>
+                    <td class="w">0</td>
+                    <td class="otw">0</td>
+                    <td class="otl">0</td>
+                    <td class="l">0</td>
+                    <td class="pts">0</td>
+                    <td class="gf">0</td>
+                    <td class="ga">0</td>
+                    <td class="diff">0</td>
+                    <td>2</td>
                 </tr>
-                <tr>
+                <tr data-team="Canada">
                     <td><img src="images/flags/Canada.png" class="flag"></td>
                     <td>Canada</td>
-                    <td>1</td><td>1</td><td>0</td><td>0</td>
-                    <td>0</td><td>3</td><td>7</td><td>5</td><td>2</td><td>5</td>
+                    <td class="gp">0</td>
+                    <td class="w">0</td>
+                    <td class="otw">0</td>
+                    <td class="otl">0</td>
+                    <td class="l">0</td>
+                    <td class="pts">0</td>
+                    <td class="gf">0</td>
+                    <td class="ga">0</td>
+                    <td class="diff">0</td>
+                    <td>5</td>
                 </tr>
-                <tr>
+                <tr data-team="Latvia">
                     <td><img src="images/flags/Latvia.png" class="flag"></td>
                     <td>Latvia</td>
-                    <td>0</td><td>0</td><td>0</td><td>0</td>
-                    <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>7</td>
+                    <td class="gp">0</td>
+                    <td class="w">0</td>
+                    <td class="otw">0</td>
+                    <td class="otl">0</td>
+                    <td class="l">0</td>
+                    <td class="pts">0</td>
+                    <td class="gf">0</td>
+                    <td class="ga">0</td>
+                    <td class="diff">0</td>
+                    <td>7</td>
                 </tr>
-                <tr>
+                <tr data-team="Czechia">
                     <td><img src="images/flags/Czechia.png" class="flag"></td>
                     <td>Czechia</td>
-                    <td>1</td><td>0</td><td>0</td><td>0</td>
-                    <td>1</td><td>0</td><td>5</td><td>7</td><td>-2</td><td>3</td>
+                    <td class="gp">0</td>
+                    <td class="w">0</td>
+                    <td class="otw">0</td>
+                    <td class="otl">0</td>
+                    <td class="l">0</td>
+                    <td class="pts">0</td>
+                    <td class="gf">0</td>
+                    <td class="ga">0</td>
+                    <td class="diff">0</td>
+                    <td>3</td>
                 </tr>
-                <tr>
+                <tr data-team="Denmark">
                     <td><img src="images/flags/Denmark.png" class="flag"></td>
                     <td>Denmark</td>
-                    <td>1</td><td>0</td><td>0</td><td>0</td>
-                    <td>1</td><td>0</td><td>2</td><td>6</td><td>-4</td><td>10</td>
+                    <td class="gp">0</td>
+                    <td class="w">0</td>
+                    <td class="otw">0</td>
+                    <td class="otl">0</td>
+                    <td class="l">0</td>
+                    <td class="pts">0</td>
+                    <td class="gf">0</td>
+                    <td class="ga">0</td>
+                    <td class="diff">0</td>
+                    <td>10</td>
                 </tr>
             </tbody>
         </table>
@@ -89,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <table class="games">
         <thead>
-            <tr>
+            <tr class="game">
                 <th>Date</th>
                 <th>Time</th>
                 <th>Home</th>
@@ -99,95 +139,89 @@ document.addEventListener("DOMContentLoaded", () => {
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr class="game">
                 <td>Dec 26</td>
                 <td>14:30</td>
-                <td><img src="images/flags/Denmark.png" class="flag"></td>
-                <td>2-6</td>
-                <td><img src="images/flags/Finland.png" class="flag"></td>
+                <td data-home="Denmark"><img src="images/flags/Denmark.png" class="flag"></td>
+                <td class="score">2-6</td>
+                <td data-away="Finland"><img src="images/flags/Finland.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 26</td>
                 <td>19:30</td>
-                <td><img src="images/flags/Czechia.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Canada.png" class="flag"></td>
+                <td data-home="Czechia"><img src="images/flags/Czechia.png" class="flag"></td>
+                <td class="score">5-7</td>
+                <td data-away="Canada"><img src="images/flags/Canada.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 27</td>
                 <td>15:30</td>
-                <td><img src="images/flags/Latvia.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Canada.png" class="flag"></td>
+                <td data-home="Latvia"><img src="images/flags/Latvia.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Canada"><img src="images/flags/Canada.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 27</td>
                 <td>19:30</td>
-                <td><img src="images/flags/Denmark.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Czechia.png" class="flag"></td>
+                <td data-home="Denmark"><img src="images/flags/Denmark.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Czechia"><img src="images/flags/Czechia.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 28</td>
                 <td>15:30</td>
-                <td><img src="images/flags/Finland.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Latvia.png" class="flag"></td>
+                <td data-home="Finland"><img src="images/flags/Finland.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Latvia"><img src="images/flags/Latvia.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 29</td>
                 <td>14:30</td>
-                <td><img src="images/flags/Finland.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Czechia.png" class="flag"></td>
+                <td data-home="Finland"><img src="images/flags/Finland.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Czechia"><img src="images/flags/Czechia.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 29</td>
                 <td>19:30</td>
-                <td><img src="images/flags/Canada.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Denmark.png" class="flag"></td>
+                <td data-home="Canada"><img src="images/flags/Canada.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Denmark"><img src="images/flags/Denmark.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 30</td>
                 <td>15:30</td>
-                <td><img src="images/flags/Latvia.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Denmark.png" class="flag"></td>
+                <td data-home="Latvia"><img src="images/flags/Latvia.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Denmark"><img src="images/flags/Denmark.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 31</td>
                 <td>14:30</td>
-                <td><img src="images/flags/Czechia.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Latvia.png" class="flag"></td>
+                <td data-home="Czechia"><img src="images/flags/Czechia.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Latvia"><img src="images/flags/Latvia.png" class="flag"></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="game">
                 <td>Dec 31</td>
                 <td>19:30</td>
-                <td><img src="images/flags/Canada.png" class="flag"></td>
-                <td>–</td>
-                <td><img src="images/flags/Finland.png" class="flag"></td>
+                <td data-home="Canada"><img src="images/flags/Canada.png" class="flag"></td>
+                <td class="score">–</td>
+                <td data-away="Finland"><img src="images/flags/Finland.png" class="flag"></td>
                 <td></td>
             </tr>
         </tbody>
     </table>
 </main>
-
+<script src="js/standings.js"></script>
 </body>
 </html>
-
-
-
-
-
-
