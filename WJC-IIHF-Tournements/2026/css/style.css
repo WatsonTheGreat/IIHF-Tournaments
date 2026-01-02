@@ -1,0 +1,292 @@
+/* RESET + BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+/* =====================
+   HEADER
+===================== */
+header {
+    background-color: #0b4ea2;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 20px;
+}
+
+/* HAMBURGER */
+.hamburger {
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* =====================
+   NAV MENU
+===================== */
+nav {
+    position: fixed;
+    top: 60px;
+    right: -220px;
+    width: 220px;
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 6px rgba(0,0,0,0.2);
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+nav.open {
+    right: 0;
+}
+
+nav a {
+    display: block;
+    padding: 15px 18px;
+    color: #0b4ea2;
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: #eef3ff;
+}
+
+/* =====================
+   MAIN CONTENT
+===================== */
+main {
+    padding: 20px;
+}
+
+main h2 {
+    margin-bottom: 12px;
+    color: #0b4ea2;
+}
+
+/* =====================
+   STANDINGS TABLE
+===================== */
+.standings {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+.standings th,
+.standings td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.standings th {
+    background-color: #0b4ea2;
+    color: white;
+    font-weight: bold;
+}
+
+.standings tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.standings tr:hover {
+    background-color: #e3ecff;
+}
+.flag{width:35px;height:auto;display:block;margin:0 auto}
+@media (max-width: 768px) {
+    .games td, .games th {
+        font-size: 12px;
+        padding: 6px;
+    }
+}
+
+/* =====================
+   MOBILE FRIENDLY
+===================== */
+@media (max-width: 768px) {
+    .standings {
+        font-size: 12px;
+    }
+
+    header h1 {
+        font-size: 18px;
+    }
+}
+
+/* =====================
+   GAMES TABLE
+===================== */
+.games {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+
+.games th,
+.games td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.games th {
+    background-color: #0b4ea2;
+    color: white;
+    font-weight: bold;
+}
+
+.games tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.games tr:hover {
+    background-color: #e3ecff;
+}
+
+/* prevent date/time wrapping */
+.games td:nth-child(1),
+.games td:nth-child(2) {
+    white-space: nowrap;
+}
+/* Wrap standings table in a scrollable container */
+.standings-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iPhone */
+}
+/* =======================
+   PLAYOFF BRACKET LAYOUT
+======================= */
+
+.playoffs-bracket {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Each round column */
+.playoffs-bracket .round,
+.playoffs-bracket .finals {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Headings */
+.playoffs-bracket h3 {
+    margin-bottom: 6px;
+    font-size: 16px;
+    color: #0b4ea2;
+}
+
+/* Relegation under QFs */
+.playoffs-bracket .relegation {
+    flex-basis: 100%;
+    margin-top: 10px;
+}
+
+/* =======================
+   GAME BOX
+======================= */
+
+.playoffs-bracket .game,
+.playoffs-bracket .gold,
+.playoffs-bracket .bronze {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 10px;
+
+    border: 2px solid #0b4ea2;
+    border-radius: 6px;
+    background: #fff;
+
+    padding: 8px;
+    width: 350px;
+}
+
+/* =======================
+   LEFT: DATE / TIME
+======================= */
+
+.playoffs-bracket .datetime {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.3;
+}
+
+/* =======================
+   RIGHT: TEAMS + SCORES
+======================= */
+
+.playoffs-bracket .teams {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Each team row */
+.playoffs-bracket .team-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* ← score higher */
+    gap: 8px;
+}
+
+/* Team name */
+.playoffs-bracket .team-name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+/* Flags */
+.playoffs-bracket .team-name .flag {
+    width: 40px;
+    height: auto;
+}
+
+/* Score */
+.playoffs-bracket .score {
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1;
+    margin-top: -2px; /* subtle lift */
+}
+
+/* =======================
+   SEMI-FINAL ALIGNMENT
+======================= */
+
+.semi-finals .sf1,
+.semi-finals .sf2 {
+    margin-top: 60px;
+}
+
+/* =======================
+   FINALS ALIGNMENT
+======================= */
+
+.finals .gold,
+.finals .bronze {
+    margin-top: 60px;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IIHF Tournaments – Final Standings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
+
+    hamburger.addEventListener("click", () => {
+        menu.classList.toggle("open");
+    });
+});
+</script>
+<body>
+
+<header>
+    <h1>IIHF Tournaments</h1>
+    <div class="hamburger" id="hamburger">☰</div>
+</header>
+
+<nav id="menu">
+    <a href="index.html">Group A</a>
+    <a href="group-B.html">Group B</a>
+    <a href="playoffs.html">Playoffs</a>
+    <a href="final.html">Final Standings</a>
+</nav>
+
+<main>
+    <h2>Final Standings</h2>
+    <p>Final rankings will go here</p>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>
