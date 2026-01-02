@@ -1,0 +1,188 @@
+/* ======================
+   GLOBAL
+====================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    background:
+        radial-gradient(circle at top, rgba(255,255,255,0.7), transparent 60%),
+        linear-gradient(#f2f5f8, #e9eef3);
+
+    color: #222;
+}
+
+/* ======================
+   HEADER
+====================== */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 20px 30px;
+
+    background: linear-gradient(90deg, #0b4ea2, #123a7a);
+    color: white;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+.iihf-logo {
+    height: 60px;
+    width: auto;
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,0.35));
+}
+
+.header-text h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.header-text p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* ======================
+   MAIN CONTAINER
+====================== */
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ======================
+   TOURNAMENT CARDS
+====================== */
+
+.tournament-card {
+    background: white;
+    border-radius: 14px;
+
+    padding: 22px 26px;
+    margin-bottom: 30px;
+
+    box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+.tournament-card::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 16px;
+
+    width: 70px;
+    height: 70px;
+
+    background: url("IIHF-logo.png") no-repeat center / contain;
+    opacity: 0.04;
+}
+
+.tournament-card h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #0b4ea2;
+}
+
+.subtitle {
+    margin: 6px 0 16px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* ======================
+   TOURNAMENT GRID
+====================== */
+
+.tournament-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+}
+
+.tournament-box {
+    border: 2px solid #0b4ea2;
+    border-radius: 10px;
+
+    padding: 18px;
+    text-align: center;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    background: #f8fbff;
+    transition: all 0.2s ease;
+}
+
+.tournament-box:hover {
+    background: #eef4ff;
+    transform: translateY(-2px);
+}
+
+/* ======================
+   OLYMPICS SPECIAL STYLE
+====================== */
+
+.tournament-card.olympics {
+    border-left: 6px solid #000;
+}
+
+.tournament-card.olympics h2 {
+    color: #000;
+}
+
+/* ======================
+   FOOTER
+====================== */
+
+.site-footer {
+    text-align: center;
+    padding: 18px;
+    font-size: 13px;
+    color: #666;
+}
+/* ======================
+   YEAR SELECTOR
+====================== */
+
+.year-selector {
+    margin-left: auto;
+    padding: 6px 10px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    border-radius: 6px;
+    border: none;
+
+    background: white;
+    color: #0b4ea2;
+
+    cursor: pointer;
+}
+
+/* ======================
+   CLICKABLE BOXES
+====================== */
+
+.tournament-box {
+    text-decoration: none;
+    color: #0b4ea2;
+    cursor: pointer;
+}
+
+.tournament-box:hover {
+    background: #eaf1ff;
+}
