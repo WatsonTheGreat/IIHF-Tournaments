@@ -289,4 +289,71 @@ main h2 {
 .finals .gold,
 .finals .bronze {
     margin-top: 60px;
+
+}
+/* =======================
+   FINAL STANDINGS PAGE
+======================= */
+
+.standings {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Header row */
+.standings thead {
+    background: #0b4ea2;
+    color: white;
+}
+
+.standings thead tr th {
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Body rows */
+.standings tbody tr {
+    transition: background 0.2s ease;
+}
+
+.standings tbody tr:hover {
+    background-color: #eef3ff;
+}
+
+/* Position column */
+.standings td:first-child {
+    font-weight: bold;
+    width: 90px;
+}
+
+/* Medal highlighting — FINAL STANDINGS */
+.standings tbody tr[data-position="1"] {
+    background-color: #fff4c2;
+}
+
+.standings tbody tr[data-position="2"] {
+    background-color: #999999;
+}
+
+.standings tbody tr[data-position="3"] {
+    background-color: #f7e0c6;
+}
+/* Flag column */
+.standings td:nth-child(2) {
+    width: 80px;
+}
+
+/* Country name */
+.standings td:nth-child(3) {
+    text-align: left;
+    padding-left: 12px;
+}
+
+/* Mobile tweak */
+@media (max-width: 600px) {
+    .standings td,
+    .standings th {
+        font-size: 12px;
+        padding: 6px;
+    }
 }
