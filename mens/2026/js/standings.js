@@ -89,4 +89,17 @@ document.addEventListener("DOMContentLoaded", () => {
         t.row.querySelector(".seed").textContent = t.seed;
     });
 
+    // MAKE STANDINGS ROWS CLICKABLE (TEAM ROSTERS)
+    document.querySelectorAll("tr[data-team]").forEach(row => {
+        row.style.cursor = "pointer";
+
+        row.addEventListener("click", () => {
+            const team = row.dataset.team;
+            if (!team) return;
+
+            // Go to teams folder (same level as group pages)
+            window.location.href = `teams/${team}.html`;
+        });
+    });
+
 });
