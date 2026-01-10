@@ -6,16 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.getElementById("hamburger");
-    const menu = document.getElementById("menu");
-
-    hamburger.addEventListener("click", () => {
-        menu.classList.toggle("open");
-    });
-});
-</script>
 <body>
 
 <header>
@@ -32,70 +22,19 @@ document.addEventListener("DOMContentLoaded", () => {
 </nav>
 
 <main>
-    <h2>Final Standings</h2>
-    <table class="standings">
-        <thead>
-            <tr>
-                <th>Position</th>
-                <th>Flag</th>
-                <th>Country</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr data-position="1">
-                <td>🥇</td>
-                <td><img src="images/flags/Sweden.png" class="flag"></td>
-                <td>Sweden</td>
-            </tr>
-            <tr data-position="2">
-                <td>🥈</td>
-                <td><img src="images/flags/Czechia.png" class="flag"></td>
-                <td>Czechia</td>
-            </tr>
-            <tr data-position="3">
-                <td>🥉</td>
-                <td><img src="images/flags/Canada.png" class="flag"></td>
-                <td>Canada</td>
-            </tr>
-            <tr data-position="4">
-                <td>4</td>
-                <td><img src="images/flags/Finland.png" class="flag"></td>
-                <td>Finland</td>
-            </tr>
-            <tr data-position="5">
-                <td>5</td>
-                <td><img src="images/flags/USA.png" class="flag"></td>
-                <td>United States of America</td>
-            </tr>
-            <tr data-position="6">
-                <td>6</td>
-                <td><img src="images/flags/Switzerland.png" class="flag"></td>
-                <td>Switzerland</td>
-            </tr>
-            <tr data-position="7">
-                <td>7</td>
-                <td><img src="images/flags/Latvia.png" class="flag"></td>
-                <td>Latvia</td>
-            </tr>
-            <tr data-position="8">
-                <td>8</td>
-                <td><img src="images/flags/Slovakia.png" class="flag"></td>
-                <td>Slovakia</td>
-            </tr>
-            <tr data-position="9">
-                <td>9</td>
-                <td><img src="images/flags/Germany.png" class="flag"></td>
-                <td>Germany</td>
-            </tr>
-            <tr data-position="10">
-                <td>10</td>
-                <td><img src="images/flags/Denmark.png" class="flag"></td>
-                <td>Denmark</td>
-            </tr>
-        </tbody>
-    </table>
+    <h2>Playoff Round</h2>
+    <h4>The final standings will appear soon.</h4>
 </main>
+<script src="js/standings.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
 
-<script src="js/app.js"></script>
+    hamburger.addEventListener("click", () => {
+        menu.classList.toggle("open");
+    });
+});
+</script>
 </body>
 </html>
